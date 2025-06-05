@@ -1,0 +1,45 @@
+name: Python CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-and-format:
+    runs-on: windows-latest  # Matches your local Windows environment
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.13.1
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.13.1"
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install black pytest  # Additional tools for CI
+    
+    - name: Run code formatter (Black)
+      run: |
+        black --check src/  # Verifies code formatting
+    
+    - name: Run unit tests
+      run: |
+        python -m pytest tests/ -v  # Runs tests in the tests/ folder
+    
+    - name: Validate data
+      run: |
+        python src/cleaner.py  # Ensures cleaning script runs without errors
+        # Add custom data checks here (e.g., validate CSV structure)
+    
+  deploy:
+    needs: test-and-format
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'  # Only deploy on main branch
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Deployment logic goes here (e.g., push to Oracle DB)"
