@@ -1,8 +1,8 @@
-google-play-scraper==1.2.2
-pandas>=2.0.0
-oracledb>=2.0.0
-matplotlib>=3.8.0
-vaderSentiment>=3.3.2
-scikit-learn>=1.4.0
-python-dotenv>=1.0.0
+google_play_scraper
+pandas
+oracledb
+matplotlib
+vaderSentiment
+scikit-learn
+python-dotenv
 seaborn
