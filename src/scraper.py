@@ -13,7 +13,6 @@ def scrape_reviews(app_ids: list, app_names: list, review_count: int = 100) -> p
                 country='et',
                 sort=Sort.NEWEST,
                 count=review_count,
-                timeout=10  # Prevents hanging on Windows
             )
             for review in result:
                 review['app_name'] = app_name
