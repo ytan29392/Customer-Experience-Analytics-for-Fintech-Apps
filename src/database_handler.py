@@ -4,7 +4,6 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv  # For secure credential management
 
-# Load environment variables (create a .env file)
 load_dotenv()
 
 class OracleDB:
@@ -78,7 +77,7 @@ class OracleDB:
         self.conn.close()
 
 if name == "main":
-    # Load analyzed data from Task 2
+    # Load analyzed data
     df = pd.read_csv(Path("../data/processed/reviews_final.csv"))
     
     # Initialize and populate database
