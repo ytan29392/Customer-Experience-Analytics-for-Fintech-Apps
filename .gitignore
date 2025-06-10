@@ -1,5 +1,6 @@
 __pycache__/
 .env
+.venv
 *.csv
 main.py
 scraper.log
