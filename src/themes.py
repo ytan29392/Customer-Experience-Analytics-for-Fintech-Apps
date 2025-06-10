@@ -1,18 +1,9 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer 
 from collections import defaultdict
 
 def extract_keywords(df: pd.DataFrame, max_features: int = 100) -> pd.DataFrame:
-    """
-    Extract top keywords from reviews using TF-IDF.
-    
-    Args:
-        df: DataFrame with 'review' column.
-        max_features: Number of keywords to extract.
-    
-    Returns:
-        DataFrame with added 'keywords' column.
-    """
+  
     tfidf = TfidfVectorizer(stop_words='english', max_features=max_features)
     tfidf.fit(df['review'].fillna(''))  # Fit on reviews, filling NaNs with empty strings
         
@@ -29,15 +20,7 @@ def extract_keywords(df: pd.DataFrame, max_features: int = 100) -> pd.DataFrame:
     return df
 
 def map_keywords_to_themes(df: pd.DataFrame) -> dict:
-    """
-    Group keywords into manual themes (e.g., "login issues" -> "Account Access").
     
-    Args:
-        df: DataFrame with 'keywords' column.
-    
-    Returns:
-        Dictionary of {bank_name: [(theme, count)]}.
-    """
     theme_mapping = {
         'login': 'Account Access',
         'password': 'Account Access',
