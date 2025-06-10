@@ -2,16 +2,6 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import pandas as pd
 
 def analyze_sentiment(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Analyze sentiment of reviews using VADER.
-    Adds columns: 'sentiment_score' (compound score) and 'sentiment_label' (positive/neutral/negative).
-    
-    Args:
-        df: DataFrame with 'review' column.
-    
-    Returns:
-        DataFrame with sentiment columns added.
-    """
     analyzer = SentimentIntensityAnalyzer()
     
     # Calculate sentiment scores

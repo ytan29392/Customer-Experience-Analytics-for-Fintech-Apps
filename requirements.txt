@@ -1,4 +1,4 @@
-google_play_scraper
+google-play-scraper
 pandas
 oracledb
 matplotlib
