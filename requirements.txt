@@ -6,3 +6,4 @@ vaderSentiment
 scikit-learn
 python-dotenv
 seaborn
+wordcloud
